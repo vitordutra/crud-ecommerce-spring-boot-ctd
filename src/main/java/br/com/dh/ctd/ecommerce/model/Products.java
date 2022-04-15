@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class Product {
+public class Products {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,21 +14,21 @@ public class Product {
     private Double price;
     private String image;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
-    private Category category;
+    @JoinColumn(name = "category_id")
+    private Categories categories;
 
-    public Product() {
+    public Products() {
     }
 
-    public Product(String title, String description, Double price, String image) {
+    public Products(Integer id, String title, String description, Double price, String image) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.image = image;
     }
 
-    public Product(Integer id, String title, String description, Double price, String image) {
-        this.id = id;
+    public Products(String title, String description, Double price, String image) {
         this.title = title;
         this.description = description;
         this.price = price;
@@ -73,14 +73,6 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
     }
 
     @Override

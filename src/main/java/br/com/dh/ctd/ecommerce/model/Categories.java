@@ -1,29 +1,28 @@
 package br.com.dh.ctd.ecommerce.model;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table
-public class Category {
+public class Categories {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
-    private Set<Product> products = new HashSet<>();
+    @OneToMany(mappedBy = "categories", fetch = FetchType.LAZY)
+    private Set<Products> products = new HashSet<>();
 
-    public Category() {
+    public Categories() {
     }
 
-    public Category(String nome) {
+    public Categories(Integer id, String nome) {
+        this.id = id;
         this.nome = nome;
     }
 
-    public Category(Integer id, String nome) {
-        this.id = id;
+    public Categories(String nome) {
         this.nome = nome;
     }
 
